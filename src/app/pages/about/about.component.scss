@@ -1,0 +1,32 @@
+.bio-text {
+  max-width: 680px;
+}
+
+.video-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0.8rem 0;
+}
+.video-links a {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.deliverables {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.deliverables li {
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  font-size: 0.92rem;
+  color: var(--text-dim);
+}
+.deliverables strong { color: var(--text); }

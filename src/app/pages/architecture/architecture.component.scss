@@ -1,0 +1,108 @@
+.lead {
+  max-width: 760px;
+  font-size: 1.05rem;
+}
+
+.diagram {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.diagram__row {
+  display: flex;
+  justify-content: center;
+}
+.diagram__row--split {
+  gap: 1rem;
+}
+
+.diagram__box {
+  flex: 1;
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 1.4rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  text-align: center;
+}
+.diagram__box strong { color: var(--text); font-size: 0.95rem; }
+.diagram__box span { color: var(--text-dim); font-size: 0.8rem; font-family: var(--font-mono); }
+
+.diagram__box--presentation { background: var(--accent-2-soft); border-color: rgba(129, 140, 248, 0.35); }
+.diagram__box--application { background: rgba(94, 234, 212, 0.08); }
+.diagram__box--domain { background: var(--accent-soft); border-color: rgba(94, 234, 212, 0.4); }
+.diagram__box--infra { background: rgba(94, 234, 212, 0.08); }
+.diagram__box--core, .diagram__box--bootstrap {
+  max-width: 320px;
+  background: var(--bg-raised);
+}
+
+.diagram__arrow {
+  text-align: center;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.35rem 0;
+}
+
+.qa-list {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.qa-item {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 1.2rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+.qa-item:last-child { border-bottom: none; }
+
+.qa-item__q {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+.qa-item__a {
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+@media (max-width: 700px) {
+  .qa-item { grid-template-columns: 1fr; }
+}
+
+.decisions { margin-top: 1.5rem; }
+
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  max-width: 780px;
+}
+.check-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 0.92rem;
+  color: var(--text-dim);
+}
+.check-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-2);
+}

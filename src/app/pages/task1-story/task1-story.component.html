@@ -1,0 +1,64 @@
+<section class="section section--tight">
+  <div class="page">
+    <span class="eyebrow">Task 1 · Interactive Content Creation</span>
+    <h1>StoryStudio — a Unity WebGL story editor</h1>
+    <p class="lead">
+      Create a story, place a background and assets on pages, drag/resize them, undo/redo,
+      save with an auto-generated thumbnail, then replay it in read-only mode — all backed by
+      Firebase Realtime Database through its REST API (the official Unity SDK doesn’t support WebGL).
+    </p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="page grid-2 demos">
+    <app-webgl-embed
+      basePath="/webgl/storyforge/"
+      title="StoryStudio — live WebGL build"
+      missingLabel="Build not available in this environment"
+      missingHint="Expected build location: /public/webgl/storyforge/index.html.">
+    </app-webgl-embed>
+    <app-video-embed
+      [videoUrl]="site.task1DemoVideoUrl"
+      title="StoryStudio — walkthrough video"
+      missingHint="A 5–10 min recorded walkthrough of the editor and playback flow will go here.">
+    </app-video-embed>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page grid-2">
+    <div>
+      <h2>What the build covers</h2>
+      <ul class="check-list">
+        @for (r of requirements; track r) {
+          <li>{{ r }}</li>
+        }
+      </ul>
+    </div>
+    <div>
+      <h2>Asset cache</h2>
+      <ul class="check-list">
+        @for (c of cache; track c) {
+          <li>{{ c }}</li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page">
+    <span class="eyebrow">Key decisions</span>
+    <h2>Why it’s built this way</h2>
+    <div class="decisions">
+      @for (d of decisions; track d.title) {
+        <div class="card decision">
+          <h3>{{ d.title }}</h3>
+          <p>{{ d.body }}</p>
+        </div>
+      }
+    </div>
+    <p class="more-link"><a routerLink="/architecture">See the full layered architecture →</a></p>
+  </div>
+</section>

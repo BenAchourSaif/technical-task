@@ -1,0 +1,68 @@
+<section class="hero section">
+  <div class="page hero__inner">
+    <span class="eyebrow">Technical test · Unity Developer at Adeeb</span>
+    <h1>Two Unity WebGL apps, one architectural discipline.</h1>
+    <p class="hero__lead">
+      An interactive content editor and a search engine, both built on Unity WebGL and Firebase
+      Realtime Database, sharing the same backbone: separated layers, decoupled events, and
+      decisions that are documented rather than left implicit.
+    </p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" routerLink="/task-1-story-creation">Watch the live demo →</a>
+      <a class="btn btn--ghost" routerLink="/architecture">Explore the architecture</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="page">
+    <div class="grid-2">
+      @for (project of projects; track project.route) {
+        <a class="project-card" [routerLink]="project.route">
+          <div class="project-card__top">
+            <span class="badge" [class.badge--accent]="project.status === 'live'" [class.badge--warn]="project.status === 'wip'">
+              {{ project.status === 'live' ? '● live demo' : '◐ in progress' }}
+            </span>
+          </div>
+          <h3>{{ project.label }}</h3>
+          <p>{{ project.tagline }}</p>
+          <span class="project-card__cta">Explore →</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page">
+    <span class="eyebrow">What holds both projects together</span>
+    <h2>No shortcuts on architecture.</h2>
+    <div class="grid-2 highlights">
+      @for (h of highlights; track h.title) {
+        <div class="card">
+          <h3>{{ h.title }}</h3>
+          <p>{{ h.body }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page">
+    <span class="eyebrow">Method</span>
+    <h2>Proposal → Implementation → Handover</h2>
+    <div class="process">
+      @for (p of process; track p.step) {
+        <div class="process__item">
+          <div class="process__step">{{ p.step }}</div>
+          <div>
+            <h3>{{ p.label }}</h3>
+            <p>{{ p.body }}</p>
+            <a [routerLink]="p.link">{{ p.linkLabel }}</a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+<div class="embed">
+  <div class="embed__bar">
+    <span class="embed__dot" [class.embed__dot--live]="state() === 'ready'"></span>
+    <span class="embed__title">{{ title }}</span>
+    <span class="embed__spacer"></span>
+    @if (state() === 'ready') {
+      <button class="embed__link" type="button" (click)="openFullscreen()">Open fullscreen ↗</button>
+    }
+  </div>
+
+  <div class="embed__stage">
+    @switch (state()) {
+      @case ('checking') {
+        <div class="embed__placeholder">
+          <div class="embed__spinner"></div>
+          <p>Checking for a build…</p>
+        </div>
+      }
+      @case ('missing') {
+        <div class="embed__placeholder embed__placeholder--missing">
+          <div class="embed__icon">🛠️</div>
+          <p class="embed__missing-label">{{ missingLabel }}</p>
+          <p class="embed__hint">{{ missingHint }}</p>
+        </div>
+      }
+      @default {
+        @if (state() === 'loading') {
+          <div class="embed__placeholder embed__placeholder--overlay">
+            <div class="embed__spinner"></div>
+            <p>Loading the Unity WebGL build…</p>
+          </div>
+        }
+        @if (safeUrl) {
+          <iframe
+            [src]="safeUrl"
+            (load)="onIframeLoad()"
+            title="{{ title }}"
+            allow="autoplay; fullscreen"
+            allowfullscreen>
+          </iframe>
+        }
+      }
+    }
+  </div>
+</div>

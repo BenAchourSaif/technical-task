@@ -1,0 +1,46 @@
+<section class="section section--tight">
+  <div class="page">
+    <span class="eyebrow">About</span>
+    <h1>{{ bio.headline }}</h1>
+    @for (p of bio.paragraphs; track p) {
+      <p class="bio-text">{{ p }}</p>
+    }
+  </div>
+</section>
+
+<section class="section">
+  <div class="page grid-2">
+    <div class="card">
+      <h2>Portfolio</h2>
+      @if (site.portfolioUrl) {
+        <a class="btn btn--primary" [href]="site.portfolioUrl" target="_blank" rel="noopener">View portfolio ↗</a>
+      } @else {
+        <p>Portfolio link not provided yet.</p>
+        <span class="todo-flag">TODO — paste the real URL into src/app/core/site-config.ts (SITE.portfolioUrl)</span>
+      }
+    </div>
+
+    <div class="card">
+      <h2>Video walkthroughs</h2>
+      <p>Each task has its own 5–10 min recorded walkthrough, shown next to its live build.</p>
+      <div class="video-links">
+        <a routerLink="/task-1-story-creation">Task 1 walkthrough →</a>
+        <a routerLink="/task-2-search">Task 2 walkthrough →</a>
+      </div>
+      @if (!site.task1DemoVideoUrl && !site.task2DemoVideoUrl) {
+        <span class="todo-flag">TODO — add links to SITE.task1DemoVideoUrl / SITE.task2DemoVideoUrl</span>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page">
+    <h2>Deliverables</h2>
+    <ul class="deliverables">
+      <li><strong>Task 1</strong> — Unity project ({{ site.repoStoryforge }}), WebGL build, README/HANDOVER/SETUP</li>
+      <li><strong>Task 2</strong> — Unity project ({{ site.repoContentDiscovery }}), still being finished</li>
+      <li><strong>This site</strong> — presentation, architecture, live demos and videos for both tasks</li>
+    </ul>
+  </div>
+</section>

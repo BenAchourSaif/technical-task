@@ -1,0 +1,18 @@
+<div class="embed">
+  <div class="embed__bar">
+    <span class="embed__dot" [class.embed__dot--live]="safeUrl"></span>
+    <span class="embed__title">{{ title }}</span>
+  </div>
+
+  <div class="embed__stage">
+    @if (safeUrl) {
+      <iframe [src]="safeUrl" title="{{ title }}" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    } @else {
+      <div class="embed__placeholder">
+        <div class="embed__icon">🎬</div>
+        <p class="embed__missing-label">{{ missingLabel }}</p>
+        <p class="embed__hint">{{ missingHint }}</p>
+      </div>
+    }
+  </div>
+</div>

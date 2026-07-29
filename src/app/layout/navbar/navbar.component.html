@@ -1,0 +1,19 @@
+<header class="nav">
+  <div class="nav__inner page">
+    <a class="nav__brand" routerLink="/" (click)="close()">
+      <span class="nav__brand-mark">◆</span>
+      Saif — Unity WebGL
+    </a>
+
+    <button class="nav__toggle" type="button" (click)="toggle()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav__links" [class.nav__links--open]="open">
+      <a routerLink="/task-1-story-creation" routerLinkActive="is-active" (click)="close()">Task 1 · Story Creation</a>
+      <a routerLink="/task-2-search" routerLinkActive="is-active" (click)="close()">Task 2 · Search</a>
+      <a routerLink="/architecture" routerLinkActive="is-active" (click)="close()">Architecture</a>
+      <a routerLink="/about" routerLinkActive="is-active" (click)="close()">About</a>
+    </nav>
+  </div>
+</header>

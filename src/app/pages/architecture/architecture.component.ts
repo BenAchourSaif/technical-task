@@ -1,0 +1,70 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-architecture',
+  standalone: true,
+  templateUrl: './architecture.component.html',
+  styleUrl: './architecture.component.scss',
+})
+export class ArchitectureComponent {
+  patterns = [
+    { name: 'MVC', body: 'Passive Views, pure-C# Controllers, engine-free Models.' },
+    { name: 'Repository', body: 'IStoryRepository / IContentDiscoveryRepository hide Firebase behind a Domain interface.' },
+    { name: 'Command', body: 'Every editor action (add, move, scale, delete) is a reversible Command in a CommandHistory.' },
+    { name: 'Observer / Event Bus', body: 'Controllers and services communicate via typed events rather than direct references.' },
+    { name: 'Strategy (cache)', body: 'Ref-counting + an LRU tier as the retention strategy, isolated behind IAssetProvider.' },
+    { name: 'Factory', body: 'Domain/DTO object creation kept separate from orchestration logic.' },
+  ];
+
+  proposalVsDelivery = [
+    {
+      question: 'Firebase Storage vs. Addressables for assets?',
+      decision: 'Firebase Hosting for static images, fetched via UnityWebRequestTexture — no Addressables; the catalog stays dynamic and driven entirely by the Firebase database itself.',
+    },
+    {
+      question: 'Thumbnail: screenshot or RenderTexture?',
+      decision: 'RenderTexture (ThumbnailRenderer) — a deterministic capture independent of whatever’s in the visible framebuffer, more reliable under WebGL.',
+    },
+    {
+      question: 'DI framework or lightweight Service Locator?',
+      decision: 'A hand-rolled ServiceLocator. A full DI framework would have been disproportionate for this project’s size; ServiceLocator + Bootstrap is enough to keep layers decoupled.',
+    },
+    {
+      question: 'Which JSON serializer?',
+      decision: 'Newtonsoft.Json, with small private DTOs using already-lowercase field names in FirebaseStoryRepository — no global camelCase convention, so each shape stays auditable against the real schema.',
+    },
+  ];
+
+  decisions = [
+    {
+      title: 'One asmdef per layer, plus a separate Bootstrap assembly',
+      body: 'Domain/Application physically cannot reach UnityEngine, which is what makes the EditMode tests (CommandHistoryTests) fast and deterministic, with no scene and no network. Bootstrap exists separately because Core can’t depend on Infrastructure without creating a cycle.',
+    },
+    {
+      title: 'MVC with no DI framework',
+      body: 'Views can’t construct their own Controller without leaking wiring logic into the “passive” layer. So each screen gets a minimal Installer that resolves dependencies from ServiceLocator in Start() — relying on Unity’s guarantee that every Awake() (where Bootstrap registers services) runs before any Start() in the same scene.',
+    },
+    {
+      title: 'The folder is named ContentEditor, not Editor',
+      body: 'Unity treats any folder literally named Editor under Assets as editor-only code and strips it from player builds — a trap that would have silently deleted the entire editor screen from every WebGL build.',
+    },
+    {
+      title: 'Drag/scale gestures commit once, not per frame',
+      body: 'ElementGestureHandler keeps the pre-gesture value and only calls CommandHistory.Do(...) on drag-end / per wheel notch — otherwise every frame of a drag would become its own undo step.',
+    },
+    {
+      title: 'Concurrent asset loads are coalesced',
+      body: 'Prefetching the next page while the current one is still in flight can request the same key twice; in-flight requests are now tracked and shared so the second caller awaits the first instead of starting a redundant download and risking a cache race.',
+    },
+    {
+      title: 'Thumbnails match the editor’s design canvas, not raw pixels',
+      body: 'ThumbnailRenderer scales each sprite against the same 1920×1080 design canvas and fixed element base size the editor uses, rather than the source texture’s own resolution — otherwise differently-sized source images would render at inconsistent scales in the saved thumbnail.',
+    },
+  ];
+
+  aiUsage = [
+    'Claude Code (Anthropic) was used as a pair-programming assistant on both projects: architecture, C# source, and this documentation were written with its help, under my direction.',
+    'Scene wiring, Play mode testing, and Firebase setup were done interactively, with the Unity Editor open — not blind.',
+    'Decisions that depart from the literal spec or fill a gap in it (the ContentEditor rename, the IAssetHandle abstraction, Bootstrap as a separate assembly, the category/subcategory catalog, the Arabic/Latin text renderer) are called out explicitly above rather than left implicit, so they stay auditable.',
+  ];
+}

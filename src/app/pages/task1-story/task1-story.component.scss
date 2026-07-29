@@ -1,0 +1,48 @@
+.lead {
+  max-width: 720px;
+  font-size: 1.05rem;
+}
+
+.demos {
+  align-items: start;
+}
+
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.check-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 0.92rem;
+  color: var(--text-dim);
+}
+.check-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.decisions {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+@media (max-width: 860px) {
+  .decisions { grid-template-columns: 1fr; }
+}
+
+.decision h3 { font-size: 1.02rem; margin-bottom: 0.4rem; }
+.decision p { font-size: 0.9rem; margin-bottom: 0; }
+
+.more-link { margin-top: 2rem; }

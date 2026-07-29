@@ -1,0 +1,94 @@
+<section class="section section--tight">
+  <div class="page">
+    <span class="eyebrow">Task 2 · Search & Content Discovery</span>
+    <div class="title-row">
+      <h1>Search over a real — and messy — Firebase catalog</h1>
+      <span class="badge badge--warn">◐ Unity WebGL in progress — see status below</span>
+    </div>
+    <p class="lead">
+      A single search box, result cards (name, author, date). The real challenge isn’t search
+      itself — it’s the data: metadata is packed into a single string per entry, with
+      inconsistent separators and missing fields.
+    </p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="page grid-2 demos">
+    <app-webgl-embed
+      basePath="/webgl/content-discovery/"
+      title="Content Discovery — live WebGL build"
+      missingLabel="Demo coming soon"
+      missingHint="The content-discovery-webgl WebGL build hasn’t been dropped into /public/webgl/content-discovery/ yet. The Unity source (MVC + event-driven architecture, CoverInfo parser, FirebaseSearchIndexRepository) already exists.">
+    </app-webgl-embed>
+    <app-video-embed
+      [videoUrl]="site.task2DemoVideoUrl"
+      title="Content Discovery — walkthrough video"
+      missingHint="A 5–10 min recorded walkthrough of search and data parsing will go here.">
+    </app-video-embed>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page">
+    <span class="eyebrow">The source data, as-is</span>
+    <h2>The CoverInfo field</h2>
+    <p>Two real entries from the same Firebase node — handled by the same parser, with no exception carved out for either:</p>
+    <div class="samples">
+      @for (s of rawSamples; track s.key) {
+        <pre><code>"{{ s.key }}": "{{ s.value }}"</code></pre>
+      }
+    </div>
+    <ul class="check-list">
+      @for (c of challenges; track c) {
+        <li>{{ c }}</li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page">
+    <span class="eyebrow">Parsing approach</span>
+    <h2>Flexible, reusable, no special cases</h2>
+    <div class="grid-3">
+      @for (a of approach; track a.title) {
+        <div class="card">
+          <h3>{{ a.title }}</h3>
+          <p>{{ a.body }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page">
+    <span class="eyebrow">Arabic/Latin mixed-script rendering</span>
+    <h2>The data isn’t just messy — it’s bilingual</h2>
+    <div class="grid-3">
+      @for (t of textRendering; track t.title) {
+        <div class="card">
+          <h3>{{ t.title }}</h3>
+          <p>{{ t.body }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page">
+    <span class="eyebrow">Discussion — scaling</span>
+    <h2>What about 10,000+ items?</h2>
+    <div class="grid-3">
+      @for (s of scalability; track s.title) {
+        <div class="card">
+          <h3>{{ s.title }}</h3>
+          <p>{{ s.body }}</p>
+        </div>
+      }
+    </div>
+    <p class="more-link"><a routerLink="/architecture">See the full MVC + event-driven architecture →</a></p>
+  </div>
+</section>

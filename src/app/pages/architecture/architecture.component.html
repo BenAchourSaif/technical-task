@@ -1,0 +1,115 @@
+<section class="section section--tight">
+  <div class="page">
+    <span class="eyebrow">Architecture</span>
+    <h1>One backbone, two deliverables</h1>
+    <p class="lead">
+      Task 1 (editor) and Task 2 (search) share the same architectural discipline: separated
+      layers, decoupled events, Firebase isolated behind interfaces. What follows is pulled from
+      the two projects’ real handover documents, not a summary written after the fact.
+    </p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="page">
+    <div class="diagram">
+      <div class="diagram__row">
+        <div class="diagram__box diagram__box--presentation">
+          <strong>Presentation</strong>
+          <span>Views (MonoBehaviour) → Controllers (pure C#)</span>
+        </div>
+      </div>
+      <div class="diagram__arrow">↓ raw events</div>
+      <div class="diagram__row">
+        <div class="diagram__box diagram__box--application">
+          <strong>Application</strong>
+          <span>Orchestration services, Commands / CommandHistory</span>
+        </div>
+      </div>
+      <div class="diagram__arrow">↓</div>
+      <div class="diagram__row">
+        <div class="diagram__box diagram__box--domain">
+          <strong>Domain</strong>
+          <span>Models (POCO), Ports (interfaces) — zero UnityEngine</span>
+        </div>
+      </div>
+      <div class="diagram__arrow diagram__arrow--up">↑ implements the Ports</div>
+      <div class="diagram__row">
+        <div class="diagram__box diagram__box--infra">
+          <strong>Infrastructure</strong>
+          <span>Firebase REST client, AssetCache, ThumbnailRenderer, serializer</span>
+        </div>
+      </div>
+      <div class="diagram__row diagram__row--split">
+        <div class="diagram__box diagram__box--core">
+          <strong>Core</strong>
+          <span>EventBus · ServiceLocator · AppLogger · FirebaseConfig</span>
+        </div>
+        <div class="diagram__box diagram__box--bootstrap">
+          <strong>Bootstrap</strong>
+          <span>Composition root — the only assembly referencing everything</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page">
+    <span class="eyebrow">Design patterns</span>
+    <h2>Required by the brief, applied concretely</h2>
+    <div class="grid-3">
+      @for (p of patterns; track p.name) {
+        <div class="card">
+          <h3>{{ p.name }}</h3>
+          <p>{{ p.body }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page">
+    <span class="eyebrow">Traceability</span>
+    <h2>Proposal v0.1 → actual decisions</h2>
+    <p>
+      The <code>Software_Architecture_Proposal_v0.1.docx</code> document listed open questions
+      before a single line of code was written. Here’s how each was resolved during implementation:
+    </p>
+    <div class="qa-list">
+      @for (item of proposalVsDelivery; track item.question) {
+        <div class="qa-item">
+          <div class="qa-item__q">{{ item.question }}</div>
+          <div class="qa-item__a">{{ item.decision }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page">
+    <span class="eyebrow">Key decisions & pitfalls avoided</span>
+    <div class="grid-2 decisions">
+      @for (d of decisions; track d.title) {
+        <div class="card">
+          <h3>{{ d.title }}</h3>
+          <p>{{ d.body }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="page">
+    <span class="eyebrow">AI tool usage</span>
+    <h2>Process transparency</h2>
+    <ul class="check-list">
+      @for (line of aiUsage; track line) {
+        <li>{{ line }}</li>
+      }
+    </ul>
+  </div>
+</section>
