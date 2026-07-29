@@ -71,8 +71,6 @@ export class ArchitectureComponent {
   ];
 
   aiUsage = [
-    'Claude Code (Anthropic) was used as a pair-programming assistant on both projects: architecture, C# source, and this documentation were written with its help, under my direction.',
-    'Scene wiring, Play mode testing, and Firebase setup were done interactively, with the Unity Editor open — not blind.',
-    'Decisions that depart from the literal spec or fill a gap in it (the ContentEditor rename, the IAssetHandle abstraction, Bootstrap as a separate assembly, the category/subcategory catalog, the Arabic/Latin text renderer) are called out explicitly above rather than left implicit, so they stay auditable.',
+    'Claude Code (Anthropic) and ChatGPT (OpenAI) were used as coding assistants throughout both projects.',
   ];
 }
