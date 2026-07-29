@@ -13,9 +13,9 @@ export const SITE = {
   candidateName: 'Saif Eddine Ben Achour',
   role: 'Unity Developer — Technical Test for Adeeb',
   portfolioUrl: 'https://benachoursaif.github.io/saifeddine/',
-  // TODO: each task's spec asks for its own 5-10 min walkthrough video — paste a
-  // YouTube/Loom/Drive embed URL (not a watch-page URL) per task once recorded.
-  task1DemoVideoUrl: null as string | null,
+  // TODO: Task 2 spec also asks for its own 5-10 min walkthrough video — paste a
+  // YouTube/Loom/Drive embed URL (not a watch-page URL) once recorded.
+  task1DemoVideoUrl: 'https://www.youtube.com/embed/4vozrgZzjwQ' as string | null,
   task2DemoVideoUrl: null as string | null,
   repoStoryforge: 'storyforge-webgl',
   repoContentDiscovery: 'content-discovery-webgl',
