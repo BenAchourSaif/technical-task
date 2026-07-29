@@ -55,6 +55,9 @@ iframe {
   height: 100%;
   border: none;
 }
+iframe:fullscreen {
+  position: static;
+}
 
 .embed__placeholder {
   position: absolute;

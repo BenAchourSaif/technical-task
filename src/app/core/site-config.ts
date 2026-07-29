@@ -41,7 +41,7 @@ export const PROJECTS: ProjectLink[] = [
   {
     label: 'Task 2 — Search & Content Discovery',
     route: '/task-2-search',
-    status: 'wip',
+    status: 'live',
     tagline: 'Full-text search over a Firebase catalog with unstructured metadata parsing.',
   },
 ];

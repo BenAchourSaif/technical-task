@@ -4,7 +4,9 @@
     <span class="embed__title">{{ title }}</span>
     <span class="embed__spacer"></span>
     @if (state() === 'ready') {
-      <button class="embed__link" type="button" (click)="openFullscreen()">Open fullscreen ↗</button>
+      <button class="embed__link" type="button" (click)="toggleFullscreen()">
+        {{ isFullscreen() ? 'Exit fullscreen ✕' : 'Fullscreen ⤢' }}
+      </button>
     }
   </div>
 
@@ -32,6 +34,7 @@
         }
         @if (safeUrl) {
           <iframe
+            #gameFrame
             [src]="safeUrl"
             (load)="onIframeLoad()"
             title="{{ title }}"
