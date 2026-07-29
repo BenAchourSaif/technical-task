@@ -13,12 +13,13 @@ export const SITE = {
   candidateName: 'Saif Eddine Ben Achour',
   role: 'Unity Developer — Technical Test for Adeeb',
   portfolioUrl: 'https://benachoursaif.github.io/saifeddine/',
-  // TODO: Task 2 spec also asks for its own 5-10 min walkthrough video — paste a
-  // YouTube/Loom/Drive embed URL (not a watch-page URL) once recorded.
   task1DemoVideoUrl: 'https://www.youtube.com/embed/4vozrgZzjwQ' as string | null,
-  task2DemoVideoUrl: null as string | null,
+  task2DemoVideoUrl: 'https://www.youtube.com/embed/6t-hOJ-K-GM' as string | null,
   repoStoryforge: 'storyforge-webgl',
+  repoStoryforgeUrl: 'https://github.com/BenAchourSaif/storyforge-webgl' as string | null,
   repoContentDiscovery: 'content-discovery-webgl',
+  // TODO: push content-discovery-webgl to GitHub and paste its URL here.
+  repoContentDiscoveryUrl: null as string | null,
 };
 
 export const BIO = {
