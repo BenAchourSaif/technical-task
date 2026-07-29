@@ -23,7 +23,11 @@
   color: var(--text);
 }
 .nav__brand:hover { text-decoration: none; color: var(--text); }
-.nav__brand-mark { color: var(--accent); }
+.nav__brand-mark {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
 
 .nav__links {
   display: flex;
