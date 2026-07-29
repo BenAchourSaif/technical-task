@@ -39,6 +39,10 @@ export class Task2SearchComponent {
       title: 'Search by content name or author',
       body: 'Once Content Name / Author / Date are extracted, search compares the normalized query (case, diacritics) against both fields.',
     },
+    {
+      title: 'IL2CPP silently stripped the index DTO’s constructor',
+      body: 'Same bug class as Task 1: the private IndexEntryWire DTO deserialized fine in the Editor but came back empty in an IL2CPP build, since managed stripping doesn’t see Newtonsoft’s reflection-based construction as a real usage. Fixed with [Preserve] — only visible once you actually run a stripped build.',
+    },
   ];
 
   textRendering = [
@@ -52,7 +56,7 @@ export class Task2SearchComponent {
     },
     {
       title: 'One config asset, not per-prefab font picking',
-      body: 'TextRenderingConfig (a single ScriptableObject registered once in Bootstrap) is the one source of truth for which font renders which script — swapping either font later touches one place, not every prefab.',
+      body: 'TextRenderingConfig — a ScriptableObject registered once in Bootstrap, the same pattern as FirebaseConfig — is the one source of truth for which font renders which script — swapping either font later touches one place, not every prefab.',
     },
   ];
 

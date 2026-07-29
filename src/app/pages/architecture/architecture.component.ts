@@ -60,6 +60,14 @@ export class ArchitectureComponent {
       title: 'Thumbnails match the editor’s design canvas, not raw pixels',
       body: 'ThumbnailRenderer scales each sprite against the same 1920×1080 design canvas and fixed element base size the editor uses, rather than the source texture’s own resolution — otherwise differently-sized source images would render at inconsistent scales in the saved thumbnail.',
     },
+    {
+      title: 'IL2CPP strips what the Editor never shows you',
+      body: 'On both projects, the private Newtonsoft.Json DTOs behind Firebase reads deserialized fine in the Editor but came back empty in a real IL2CPP build — managed stripping doesn’t recognize Newtonsoft’s reflection-based construction as a usage, so it removed the constructors. Fixed with [Preserve] on each DTO. The kind of bug that only exists in the artifact you actually ship.',
+    },
+    {
+      title: 'CORS is part of the architecture, not an afterthought',
+      body: 'Textures loaded cross-origin into a WebGL canvas need Access-Control-Allow-Origin from the server, or the browser silently refuses them. Firebase Hosting is configured with that header on /assets/**, and the headless build (decompressionFallback + nameFilesAsHashes) is explicitly tuned for a host — this Angular site — whose exact header behavior isn’t guaranteed.',
+    },
   ];
 
   aiUsage = [
